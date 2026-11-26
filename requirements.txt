@@ -1,0 +1,22 @@
+# Core UI
+streamlit>=1.49.0
+
+# Embeddings & Reranking
+sentence-transformers>=3.0.0
+torch>=2.2.0
+msvc-runtime>=14.40; sys_platform == "win32"
+
+# Vector Store
+faiss-cpu>=1.8.0
+
+# Google Gemini Official SDK
+google-genai>=1.0.0
+
+# Data & HTTP
+numpy>=1.26.0
+pandas>=2.2.0
+requests>=2.31.0
+python-dotenv>=1.0.1
+
+# Testing
+pytest>=8.0.0

@@ -1,0 +1,60 @@
+# Environment and secrets
+.env
+.env.local
+*.key
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Temporary files, uploads, and generated vector indexes
+data/*
+!data/.gitkeep
+tmp/
+temp/
+*.tmp
+*.temp
+*.zip
+*.faiss
+*.index
+
+# Local model cache artifacts if downloaded into project
+.cache/
+models/
+huggingface/
+
+
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
