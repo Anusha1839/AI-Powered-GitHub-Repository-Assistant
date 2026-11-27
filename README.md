@@ -372,11 +372,13 @@ The tests cover:
 - RAG pipeline functionality.
 - Application interface tests.
 
-## 📸 18. Demo Link
+## 🎥 18. Application Demo
 
-### Application Interface
+Watch the application walkthrough to see how the AI-Powered GitHub Repository Assistant works.
 
-"C:\Users\BHARGAVI\Downloads\streamlit-app-2026-11-27-13-26-03.webm"
+[![Application Demo](https://img.shields.io/badge/Watch-Application%20Demo-blue?style=for-the-badge&logo=github)](assets/demo-video.webm)
+
+**Demo video:** [View Application Demo](assets/demo-video.webm)
 
 ## ⚠️ 19. Limitations
 
