@@ -372,19 +372,11 @@ The tests cover:
 - RAG pipeline functionality.
 - Application interface tests.
 
-## 📸 18. Screenshots
+## 📸 18. Demo Link
 
 ### Application Interface
 
-[Add your application screenshot here]
-
-### Repository Analysis
-
-[Add your repository analysis screenshot here]
-
-### AI Chat and Source References
-
-[Add your AI chat screenshot here]
+"C:\Users\BHARGAVI\Downloads\streamlit-app-2026-11-27-13-26-03.webm"
 
 ## ⚠️ 19. Limitations
 
