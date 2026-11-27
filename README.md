@@ -374,8 +374,13 @@ The tests cover:
 
 ## 🎥 18. Application Demo
 
-https://github.com/Anusha1839/AI-Powered-GitHub-Repository-Assistant/raw/refs/heads/main/assets/demo-video.webm
-**Demo video:** [View Application Demo](assets/demo-video.webm)
+Watch the complete video demonstration of the AI-Powered GitHub Repository Assistant.
+
+▶️ **[Watch Application Demo](https://drive.google.com/file/d/1pgDCx2PMdV4bbKmY7Be0t93plLrwcBFv/view?usp=sharing)**
+
+*The video opens directly in Google Drive for online playback.*
+
+
 
 ## ⚠️ 19. Limitations
 
