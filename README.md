@@ -1,134 +1,194 @@
-# AI-Powered GitHub Repository Assistant
+# 🚀 AI-Powered GitHub Repository Assistant
 
-## 1. Project Introduction
+An intelligent codebase analysis assistant powered by **Retrieval-Augmented Generation (RAG)** that understands software repositories and answers natural-language questions with accurate source-code references.
 
-**AI-Powered GitHub Repository Assistant** is a Retrieval-Augmented Generation (RAG) developer assistant built with Python, Streamlit, Sentence Transformers, FAISS, Cross-Encoder reranking, and Google Gemini. It ingests complete software repositories—via a public GitHub URL, a local `.zip` archive, or a local folder/multi-file upload—and answers natural-language questions grounded strictly in the repository's actual source code and documentation, complete with file path references and line-numbered code snippets.
+## 🌐 Live Demo
 
----
+**Try the application:**
 
-## 2. Problem Statement
+🔗 **Live Application:** [ADD YOUR DEPLOYED APP LINK HERE]
 
-Understanding an unfamiliar codebase is time-consuming: developers must manually read directory trees, trace imports across files, decipher undocumented functions, and piece together how modules interact. Standard chat LLMs without repository indexing either lack access to private/local projects or hallucinate file names and implementation details. **AI-Powered GitHub Repository Assistant** solves this by indexing real project files into a local vector store, reranking candidate code chunks with a Cross-Encoder, and generating context-grounded answers with verifiable source references.
+**GitHub Repository:** [AI-Powered GitHub Repository Assistant](https://github.com/Anusha1839/AI-Powered-GitHub-Repository-Assistant)
 
----
-
-## 3. Project Objectives
-
-- Support **three unified project input methods**: public GitHub repository URL, local ZIP archive upload, and local folder / multi-file upload.
-- Process all three input sources through **one unified downstream RAG pipeline** without duplicating retrieval or generation logic.
-- Extract, filter, validate, and chunk source code and documentation safely without ever executing untrusted repository code.
-- Generate dense vector embeddings using `all-MiniLM-L6-v2` and store them in isolated per-project `faiss-cpu` indexes.
-- Improve retrieval precision using `cross-encoder/ms-marco-MiniLM-L-6-v2` reranking.
-- Generate clear, grounded technical and beginner-friendly answers via the official `google-genai` SDK.
-- Present verified source file paths, line ranges, and code snippets alongside every answer.
+The application is deployed using Streamlit Community Cloud.
 
 ---
 
-## 4. Key Features
+## 📌 1. Project Introduction
 
-- **Three Input Modes**: Public GitHub URL loader, safe ZIP archive extractor, and local folder / multiple-file uploader.
-- **Unified Processing Pipeline**: Common `ProjectDocumentBundle` -> `ProcessedRepository` representation across all inputs.
-- **Security-First Ingestion**: ZIP path-traversal protection, symlink rejection, archive size & file-count limits, binary filtering, prompt-injection isolation (`<UNTRUSTED_REPOSITORY_CONTEXT>`), and zero execution of repository code.
-- **Line-Aware Code Chunking**: Preserves relative paths, file names, language metadata, and exact `start_line`–`end_line` ranges.
-- **Semantic Search + Cross-Encoder Reranking**: Two-stage retrieval combining fast FAISS cosine similarity (`IndexFlatIP` over L2-normalized vectors) with Cross-Encoder relevance scoring.
-- **Grounded Gemini Answers & Source Citations**: Displays exact file paths, line numbers, similarity/rerank scores, and syntax-highlighted code snippets.
-- **Interactive Streamlit Dashboard**: Project metrics, language breakdown, indexed file browser, configurable RAG hyperparameters, chat history, and project reset controls.
+**AI-Powered GitHub Repository Assistant** is an AI-powered developer assistant designed to simplify understanding and exploring software codebases.
 
----
+It uses Retrieval-Augmented Generation (RAG), Sentence Transformers, FAISS vector search, Cross-Encoder reranking, and Google Gemini to analyze software repositories and answer questions based on their actual source code and documentation.
 
-## 5. Technology Stack
+Users can provide a GitHub repository URL, upload a ZIP archive, or upload local project files. The application processes the repository, retrieves relevant code snippets, and generates contextual answers with file paths, line numbers, and source-code references.
+
+## 🎯 2. Problem Statement
+
+Understanding an unfamiliar software project can be time-consuming. Developers often need to manually explore directory structures, trace dependencies, understand functions, and identify relationships between different modules.
+
+General-purpose AI chatbots may not have access to the actual project files and can sometimes generate incorrect file names or implementation details.
+
+This project addresses these challenges by:
+
+- Automatically analyzing software repositories.
+- Extracting and indexing source-code files.
+- Finding relevant code using semantic search.
+- Improving retrieval accuracy through reranking.
+- Generating context-aware answers using Google Gemini.
+- Providing verifiable source-code references.
+
+## 🎯 3. Project Objectives
+
+- Support GitHub repository URLs, ZIP uploads, and local project folder uploads.
+- Process all input sources through one unified RAG pipeline.
+- Extract and filter source code and documentation safely.
+- Generate embeddings using Sentence Transformers.
+- Store and retrieve vector embeddings using FAISS.
+- Improve retrieval relevance using Cross-Encoder reranking.
+- Generate accurate, contextual answers using Google Gemini.
+- Display relevant file paths, line numbers, and code snippets.
+
+## ✨ 4. Key Features
+
+- **Multiple Input Sources:** Analyze GitHub repositories, ZIP archives, and local project folders.
+- **Automated Repository Analysis:** Extracts, filters, processes, and indexes project files.
+- **Retrieval-Augmented Generation:** Uses retrieved code context to generate relevant answers.
+- **Semantic Code Search:** Finds relevant code using Sentence Transformers and FAISS.
+- **Cross-Encoder Reranking:** Improves the relevance of retrieved code snippets.
+- **AI-Powered Code Explanations:** Uses Google Gemini to explain project architecture, functions, modules, and implementation details.
+- **Source-Code References:** Displays relevant file paths, line ranges, and code snippets.
+- **Interactive Chat Interface:** Allows users to ask natural-language questions about their analyzed codebase.
+- **Modern Dark UI:** Provides a clean and developer-friendly interface.
+
+## 🛠️ 5. Technology Stack
 
 | Component | Technology |
-| :--- | :--- |
-| **Language** | Python 3.11.9 (64-bit) |
-| **Frontend** | Streamlit |
-| **Repository Access** | GitHub REST API (`requests`), ZIP extraction (`zipfile`) |
-| **Embeddings** | Sentence Transformers (`all-MiniLM-L6-v2`, CPU) |
-| **Vector Database** | FAISS CPU (`faiss-cpu`, `IndexFlatIP`) |
-| **Reranking** | Cross-Encoder (`cross-encoder/ms-marco-MiniLM-L-6-v2`, CPU) |
-| **LLM** | Google Gemini API via official `google-genai` Python SDK |
-| **Utilities & Testing** | NumPy, Pandas, python-dotenv, pytest |
+|---|---|
+| Programming Language | Python |
+| Frontend | Streamlit |
+| AI Architecture | Retrieval-Augmented Generation (RAG) |
+| Embedding Model | Sentence Transformers |
+| Embedding Model Name | all-MiniLM-L6-v2 |
+| Vector Database | FAISS CPU |
+| Retrieval | Semantic Similarity Search |
+| Reranking | Cross-Encoder |
+| Reranker Model | cross-encoder/ms-marco-MiniLM-L-6-v2 |
+| Large Language Model | Google Gemini |
+| Gemini Integration | google-genai SDK |
+| Data Processing | NumPy, Pandas |
+| Testing | Pytest |
 
----
+## 📂 6. Supported Input Methods
 
-## 6. Three Supported Input Methods
+### 1. GitHub Repository URL
 
-1. **GitHub Repository URL** (`src/github_loader.py`):
-   - Validates `https://github.com/owner/repository-name` (including `.git` and `/tree/branch` URLs).
-   - Fetches repository metadata via the GitHub REST API and downloads the repository archive safely.
-   - Handles invalid URLs, 404/private repositories, empty repositories, API rate limits, and network timeouts.
+- Accepts public GitHub repository URLs.
+- Retrieves repository files using the GitHub REST API.
+- Downloads and processes repository archives.
+- Handles invalid URLs, unavailable repositories, API rate limits, and network errors.
 
-2. **Local Project ZIP Upload** (`src/local_project_loader.py`):
-   - Accepts `.zip` archives via Streamlit's file uploader.
-   - Validates archive size and uncompressed totals, prevents path-traversal (`..`, absolute paths, symlinks), extracts to an isolated temporary directory, and preserves relative paths across nested directories.
+### 2. Upload ZIP Archive
 
-3. **Local Project Folder / Multiple-File Upload** (`src/local_project_loader.py`):
-   - Uses Streamlit's directory upload mode (`accept_multiple_files="directory"`) where supported by the browser (Chromium, Edge, Firefox) and provides a Multiple-File Selection alternative if directory picking is unsupported or unavailable.
-   - Preserves relative directory structure when provided by the browser and groups files under the detected project root.
+- Accepts compressed project ZIP files.
+- Extracts source-code files safely.
+- Preserves nested directory structures.
+- Validates archive size and file contents.
+- Prevents unsafe archive path traversal.
 
----
+### 3. Upload Local Project Folder
 
-## 7. RAG Architecture
+- Supports local project folder selection where the browser allows directory uploads.
+- Also supports multiple-file selection.
+- Preserves relative file paths when provided by the browser.
+- Processes uploaded files through the same RAG pipeline.
 
-All three loaders produce a common `ProjectDocumentBundle` that flows into the same downstream pipeline:
+## 🧠 7. RAG Architecture
 
-1. **Repository Processor** (`src/repository_processor.py`): Excludes noisy directories (`.git`, `node_modules`, `__pycache__`, `venv`, `dist`, `build`, etc.), filters unsupported/binary/empty/oversized files, safely decodes text, and computes a deterministic `project_id`.
-2. **Code Chunker** (`src/chunking.py`): Splits files into configurable overlapping, line-numbered `CodeChunk` objects.
-3. **Embedding Generator** (`src/embeddings.py`): Encodes chunks and user queries with cached `all-MiniLM-L6-v2` embeddings on CPU.
-4. **FAISS Vector Store** (`src/vector_store.py`): Stores normalized vectors in isolated per-project `faiss.IndexFlatIP` indexes and skips redundant re-indexing when content has not changed.
-5. **Semantic Retriever** (`src/retriever.py`): Embeds natural-language questions and retrieves the top-K candidate chunks from the active project index.
-6. **Cross-Encoder Reranker** (`src/reranker.py`): Scores `(question, chunk)` pairs using cached `cross-encoder/ms-marco-MiniLM-L-6-v2` and selects the top-K most relevant snippets.
-7. **Gemini Answer Generator** (`src/gemini_llm.py`): Sends grounded context wrapped in untrusted-data delimiters to Google Gemini via `google-genai` and returns a structured answer with verified source citations.
+The application follows a unified Retrieval-Augmented Generation pipeline.
 
----
+All three input methods use the same downstream processing architecture.
 
-## 8. System Workflow
+### Repository Processing Workflow
 
-1. In the unified **Analyze Your Project** section, choose a source (**GitHub Repository URL**, **Upload ZIP**, or **Upload Project Folder**).
-2. Provide the repository URL, `.zip` archive, or project folder and click **Analyze Repository**, **Analyze ZIP**, or **Analyze Folder** to run filtering, chunking, embedding generation, and FAISS indexing.
-3. Review the **Project Summary** card (total discovered files, indexed files, skipped files, total lines, and language breakdown) and the sidebar **Project Status** / **Gemini API Status**.
-4. Ask a natural-language question in the dark-themed AI chat interface and click **Send** (or click an example question).
-5. Review the grounded answer alongside expandable **Source References** showing exact relative file paths, line ranges, and code snippets.
+1. **Repository Ingestion:** Reads files from GitHub, ZIP archives, or local project uploads.
+2. **Repository Processing:** Filters unsupported, binary, empty, and unnecessary files.
+3. **Code Chunking:** Splits source files into smaller overlapping chunks while preserving line numbers and metadata.
+4. **Embedding Generation:** Converts code chunks into numerical vector representations using Sentence Transformers.
+5. **Vector Storage:** Stores embeddings in FAISS for efficient similarity search.
 
----
+### Question Answering Workflow
 
-## 9. Architecture Diagram
+6. **Query Embedding:** Converts the user's natural-language question into a vector representation.
+7. **Semantic Retrieval:** Retrieves relevant code chunks from the FAISS index.
+8. **Cross-Encoder Reranking:** Reorders retrieved results according to their relevance to the question.
+9. **Gemini Answer Generation:** Uses the retrieved repository context to generate an answer.
+10. **Source References:** Displays relevant file paths, line numbers, and code snippets alongside the answer.
+
+### Architecture Diagram
 
 ```mermaid
 flowchart TD
-    A["GitHub Repository URL"] --> D["GitHub Loader"]
-    B["Local Project ZIP Upload"] --> E["ZIP Project Loader"]
-    C["Local Folder / Multi-File Upload"] --> F["Local Folder/File Loader"]
+    A[GitHub Repository URL] --> D[GitHub Loader]
+    B[ZIP Archive Upload] --> E[ZIP Loader]
+    C[Local Folder Upload] --> F[Folder Loader]
 
-    D --> G["Common ProjectDocumentBundle"]
+    D --> G[Unified Project Processing]
     E --> G
     F --> G
 
-    G --> H["Unified Repository Processor (Filtering and Decoding)"]
-    H --> I["Line-Aware Code Chunker"]
-    I --> J["Sentence Transformers (all-MiniLM-L6-v2)"]
-    J --> K["FAISS CPU Vector Store (Per-Project Index)"]
+    G --> H[Repository Processor]
+    H --> I[Code Chunking]
+    I --> J[Sentence Transformers]
+    J --> K[FAISS Vector Store]
 
-    Q["User Natural-Language Question"] --> JQ["Query Embedding (all-MiniLM-L6-v2)"]
-    JQ --> L["Semantic Retriever (Top-K FAISS Search)"]
-    K --> L
-    L --> M["Cross-Encoder Reranker (ms-marco-MiniLM-L-6-v2)"]
-    M --> N["Google Gemini (google-genai SDK)"]
-    N --> O["Context-Grounded Answer + Source References and Snippets"]
+    Q[User Question] --> R[Query Embedding]
+    R --> S[Semantic Retrieval]
+    K --> S
+
+    S --> T[Cross-Encoder Reranking]
+    T --> U[Google Gemini]
+    U --> V[Contextual Answer]
+    V --> W[Source References]
 ```
 
----
+## 🔄 8. Application Workflow
 
-## 10. Project Folder Structure
+1. Open the deployed application or run it locally.
+2. Select a project input method.
+3. Provide a GitHub repository URL, ZIP archive, or local project files.
+4. Click **Analyze Repository**.
+5. Wait for the repository to be processed and indexed.
+6. Once analysis is complete, the chat interface becomes available.
+7. Ask natural-language questions about the codebase.
+8. Review AI-generated explanations and relevant source-code references.
+
+## 💬 9. Example Questions
+
+Users can ask questions such as:
+
+1. What is the purpose of this project?
+2. Explain the overall project architecture.
+3. Explain the main application file.
+4. Which libraries and frameworks are used?
+5. How does the RAG pipeline work?
+6. How are embeddings generated?
+7. How does FAISS retrieve relevant code?
+8. Explain a particular function or class.
+9. How are different modules connected?
+10. Explain the execution flow from input to output.
+
+## 📁 10. Project Folder Structure
 
 ```text
-ai-powered-github-repository-assistant/
+AI-Powered-GitHub-Repository-Assistant/
+│
 ├── app.py
 ├── config.py
 ├── requirements.txt
 ├── .env.example
 ├── .gitignore
 ├── README.md
+│
 ├── src/
 │   ├── __init__.py
 │   ├── github_loader.py
@@ -141,143 +201,228 @@ ai-powered-github-repository-assistant/
 │   ├── reranker.py
 │   ├── gemini_llm.py
 │   └── rag_pipeline.py
+│
 ├── utils/
 │   ├── __init__.py
 │   ├── helpers.py
 │   └── logger.py
+│
 ├── tests/
 │   ├── test_github_loader.py
 │   ├── test_local_project_loader.py
 │   ├── test_repository_processor.py
 │   ├── test_chunking.py
 │   ├── test_retriever.py
-│   └── test_rag_pipeline.py
+│   ├── test_rag_pipeline.py
+│   └── test_ui_app.py
+│
 └── data/
 ```
 
----
+## 💻 11. Installation Instructions
 
-## 11. Installation Instructions
+### Prerequisites
 
-Ensure **Python 3.11.9 (64-bit)** and **Git** are installed on your system.
+- Python 3.11.9 (64-bit)
+- Git
+- Visual Studio Code (recommended)
+- Google Gemini API key
 
-```powershell
-cd ai-powered-github-repository-assistant
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/Anusha1839/AI-Powered-GitHub-Repository-Assistant.git
 ```
 
----
+### Step 2: Navigate to the Project Directory
 
-## 12. Python Environment Setup
+```bash
+cd AI-Powered-GitHub-Repository-Assistant
+```
+
+## 🐍 12. Virtual Environment Setup
 
 ### Windows PowerShell
+
 ```powershell
 python -m venv venv
-.\venv\Scripts\Activate.ps1
+venv\Scripts\Activate.ps1
 ```
 
-### Windows Command Prompt (CMD)
+### Windows Command Prompt
+
 ```cmd
 python -m venv venv
 venv\Scripts\activate.bat
 ```
 
----
+## 📦 13. Install Dependencies
 
-## 13. Dependency Installation
+Upgrade pip:
 
-```powershell
+```bash
 python -m pip install --upgrade pip
+```
+
+Install all required packages:
+
+```bash
 pip install -r requirements.txt
 ```
 
----
+## 🔑 14. Gemini API Configuration
 
-## 14. Gemini API Key Configuration
+The application uses Google Gemini to generate context-aware answers based on retrieved repository content.
 
-1. Obtain an API key from Google AI Studio: https://aistudio.google.com/apikey
-2. Copy `.env.example` to `.env` in the project root:
-   - PowerShell: `Copy-Item .env.example .env`
-   - CMD: `copy .env.example .env`
-3. Edit `.env` and set your key:
+### Get a Gemini API Key
+
+Visit [Google AI Studio](https://aistudio.google.com/apikey) and create an API key.
+
+### Local Configuration
+
+1. Copy `.env.example` to `.env`.
+
+PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+2. Open `.env` and configure:
 
 ```env
 GEMINI_API_KEY=your_actual_api_key_here
 GEMINI_MODEL=gemini-3.7-flash
 ```
 
-Optionally, add `GITHUB_TOKEN=...` in `.env` to increase GitHub REST API rate limits. Never commit `.env` to GitHub.
+3. Save the file.
 
----
+**Security:** Never upload your `.env` file or expose your API key in public repositories.
 
-## 15. How to Run the Application
+### Deployed Application Configuration
 
-```powershell
+For the deployed Streamlit application, the application owner must configure the Gemini API key through Streamlit Community Cloud Secrets.
+
+1. Open [Streamlit Community Cloud](https://share.streamlit.io/).
+2. Select the deployed application.
+3. Navigate to **Settings → Secrets**.
+4. Add the following TOML configuration:
+
+```toml
+GEMINI_API_KEY = "your_actual_gemini_api_key"
+GEMINI_MODEL = "gemini-3.7-flash"
+```
+
+5. Save the configuration and allow the application to restart.
+
+**Important:** The application owner configures the API key once. Recruiters and other users do not need to provide their own API keys to use the application.
+
+## ▶️ 15. Run the Application Locally
+
+After installing dependencies and configuring the Gemini API key, run:
+
+```bash
 streamlit run app.py
 ```
 
-Open the local URL displayed in the terminal (typically `http://localhost:8501`).
+Open the local URL displayed in the terminal, typically:
 
----
+```text
+http://localhost:8501
+```
 
-## 16. Example Questions
+## ☁️ 16. Deployment
 
-1. What is the purpose of this project?
-2. Explain the overall project architecture.
-3. Explain the main application file.
-4. How does authentication work?
-5. Which libraries and frameworks are used?
-6. Explain a particular function or class.
-7. How does data flow through the application?
-8. What are the important modules and how are they connected?
-9. Identify possible improvements or refactoring opportunities.
-10. Explain the execution flow from entry point to output.
+The application is deployed using **Streamlit Community Cloud**.
 
----
+### Deployment Steps
 
-## 17. Testing Instructions
+1. Push the project source code to GitHub.
+2. Visit [Streamlit Community Cloud](https://share.streamlit.io/).
+3. Sign in using your GitHub account.
+4. Select **Create App**.
+5. Choose the project repository.
+6. Select the `main` branch.
+7. Set the main file path to `app.py`.
+8. Configure the required Gemini API key through Streamlit Secrets.
+9. Click **Deploy**.
 
-Run the full automated `pytest` test suite:
+After successful deployment, the application will be accessible through its public Streamlit URL.
 
-```powershell
+**Live Demo:** [ADD YOUR DEPLOYED APP LINK HERE]
+
+## 🧪 17. Testing Instructions
+
+Run the automated test suite:
+
+```bash
 pytest -v
 ```
 
-The test suite covers GitHub URL parsing & error handling, ZIP & folder ingestion (including path-traversal and size checks), repository filtering, line-aware chunking, FAISS vector store isolation, semantic retrieval, and end-to-end unified pipeline tests.
+The tests cover:
+
+- GitHub repository URL parsing and error handling.
+- ZIP archive ingestion.
+- Local folder and multiple-file ingestion.
+- Archive path-traversal and size validation.
+- Repository filtering and processing.
+- Line-aware code chunking.
+- FAISS vector storage.
+- Semantic retrieval.
+- RAG pipeline functionality.
+- Application interface tests.
+
+## 📸 18. Screenshots
+
+### Application Interface
+
+[Add your application screenshot here]
+
+### Repository Analysis
+
+[Add your repository analysis screenshot here]
+
+### AI Chat and Source References
+
+[Add your AI chat screenshot here]
+
+## ⚠️ 19. Limitations
+
+- **Public GitHub Repositories:** Private repositories require an appropriate GitHub token.
+- **Browser Folder Upload:** Directory upload support depends on browser capabilities. ZIP upload and multiple-file selection are alternatives.
+- **CPU Processing:** Sentence Transformer embeddings and Cross-Encoder reranking run on CPU, so large repositories may require additional processing time.
+- **In-Memory Vector Indexes:** FAISS indexes are maintained for the active application session and may be cleared when the session or server restarts.
+- **File Size Restrictions:** Individual source files and archives are subject to configured size limits to manage memory usage.
+
+## 🔮 20. Future Enhancements
+
+- Persistent FAISS vector index caching.
+- AST-aware code chunking for Python, Java, JavaScript, and TypeScript.
+- Git branch and pull request comparison.
+- Automated architecture documentation.
+- Exportable Markdown reports.
+- Improved support for large software repositories.
+
+## 🔒 21. Security Considerations
+
+- API keys are stored using environment variables or Streamlit Secrets.
+- Sensitive credentials are excluded from Git version control.
+- Uploaded repositories are treated as untrusted input.
+- Repository code is analyzed as text and is never executed.
+- ZIP extraction includes path-traversal protection and file validation.
 
 ---
 
-## 18. Screenshots
+## 👩‍💻 Author
 
-> Run `streamlit run app.py` to launch the dark-themed SaaS dashboard featuring the unified **Analyze Your Project** selector (**GitHub Repository URL**, **Upload ZIP**, **Upload Project Folder**), **Project Summary**, sidebar status panel, and **AI Chat + Source References** view. Add screenshots to a `docs/` folder if desired when publishing to GitHub.
+**Dhanusha Katakam Ediga**
 
----
+AI & ML Graduate | Aspiring AI Engineer
 
-## 19. Limitations
+**GitHub:** [Anusha1839](https://github.com/Anusha1839)
 
-- **Public GitHub Repositories Only** (unless `GITHUB_TOKEN` with appropriate access is provided in `.env`).
-- **Browser Folder Upload Support**: `accept_multiple_files="directory"` relies on browser `webkitdirectory` support; browsers without directory upload support can use Multiple-File Selection or ZIP Upload.
-- **CPU Inference Latency**: Running `all-MiniLM-L6-v2` and `cross-encoder/ms-marco-MiniLM-L-6-v2` on CPU is memory-efficient, though large repositories with thousands of chunks take longer during initial embedding.
-- **In-Memory Session Indexes**: FAISS indexes are stored per active session in memory and cleared on project reset or server restart.
-- **File & Archive Limits**: Individual source files above 1 MB and archives above 200 MB are skipped or rejected to protect memory.
+**LinkedIn:** [Dhanusha Katakam Ediga](https://www.linkedin.com/in/dhanusha1839/)
 
 ---
 
-## 20. Future Enhancements
-
-- Persistent on-disk FAISS index caching keyed by commit SHA / project hash.
-- AST-aware chunking for Python, Java, JavaScript, and TypeScript functions and classes.
-- Support for comparing two branches or pull request diffs.
-- Exportable Markdown architecture reports generated from repository analysis.
-
----
-
-## Git & GitHub Preparation
-
-```powershell
-git init
-git add .
-git commit -m "Initial commit: AI-Powered GitHub Repository Assistant"
-git branch -M main
-git remote add origin YOUR_GITHUB_REPOSITORY_URL
-git push -u origin main
-```
+⭐ If you find this project useful, consider giving the repository a star!
