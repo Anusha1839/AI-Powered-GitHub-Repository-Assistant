@@ -374,10 +374,7 @@ The tests cover:
 
 ## 🎥 18. Application Demo
 
-Watch the application walkthrough to see how the AI-Powered GitHub Repository Assistant works.
-
-[![Application Demo](https://img.shields.io/badge/Watch-Application%20Demo-blue?style=for-the-badge&logo=github)](assets/demo-video.webm)
-
+https://github.com/Anusha1839/AI-Powered-GitHub-Repository-Assistant/raw/refs/heads/main/assets/demo-video.webm
 **Demo video:** [View Application Demo](assets/demo-video.webm)
 
 ## ⚠️ 19. Limitations
