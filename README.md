@@ -6,7 +6,7 @@ An intelligent codebase analysis assistant powered by **Retrieval-Augmented Gene
 
 **Try the application:**
 
-🔗 **Live Application:** [ADD YOUR DEPLOYED APP LINK HERE]
+🔗 **Live Application:** [https://ai-powered-app-repository-assistant-bv6eapgg7hd8anzrsxokmq.streamlit.app/]
 
 **GitHub Repository:** [AI-Powered GitHub Repository Assistant](https://github.com/Anusha1839/AI-Powered-GitHub-Repository-Assistant)
 
